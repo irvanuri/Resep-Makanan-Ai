@@ -5,10 +5,13 @@ import google.generativeai as genai
 API_KEY = "AIzaSyCe1FaZ4py5e3i7lTBTjygATXA0xmyl8IY"
 genai.configure(api_key=API_KEY)
 
+import google.generativeai as genai
+
 def get_recipe(prompt):
     model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest")
-    response = model.generate_content(prompt)
+    response = model.generate_content([prompt])
     return response.text
+
 
 st.title("Cari Resep Makanan dengan Gemini AI")
 
@@ -22,4 +25,5 @@ if st.button("Cari Resep"):
             st.write(hasil)
     else:
         st.warning("Silakan masukkan kata kunci dulu.")
+
 
